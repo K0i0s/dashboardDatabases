@@ -8,10 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Configurar CORS para permitir solicitudes desde el frontend
-app.use(cors({
-  origin: 'http://localhost:5173', // Permitir solo el origen del frontend
-  methods: ['GET', 'POST'], // Métodos permitidos
-}));
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 
 // Middleware para parsear el cuerpo de las solicitudes JSON
 app.use(bodyParser.json());

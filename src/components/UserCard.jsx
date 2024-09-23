@@ -1,7 +1,7 @@
 import React from 'react'
 
 const UserCard = ({ user }) => {
-    const { nombre, lastName, momLastName, email, birthday, gender} = user
+    const { nombre, last_name, mom_last_name} = user
 
     const style = {
         userCard:{
@@ -16,11 +16,8 @@ const UserCard = ({ user }) => {
     return (
         <div style={style.userCard}>
             <p>Nombre: {nombre}</p>
-            <p>Apellido Paterno: {lastName}</p>
-            <p>Apellido Materno: {momLastName}</p>
-            <p>Correo: {email}</p>
-            <p>Genero: {gender}</p>
-            <p>Fecha de nacimiento: {birthday}</p>
+            <p>Apellido Paterno: {last_name}</p>
+            <p>Apellido Materno: {mom_last_name}</p>
         </div>
     )
 }

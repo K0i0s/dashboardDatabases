@@ -1,33 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { doc, getDoc} from 'firebase/firestore'
-import { db } from '../services/firebase'
 
 const Pageviews = () => {
     const [pageviews, setPageviews] = useState(null);
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
-
-    useEffect(()=>{
-        const fetchPageviews = async () => {
-            try{
-                const docRef = doc(db, 'metrics', 'pageviews')
-                const docSnap = await getDoc(docRef);
-
-                if (docSnap.exists()){
-                    setPageviews(docSnap.data().count)
-                }else{
-                    console.log('No se encontro el documento');
-                }
-            } catch(error){
-                setError('Fallo al hacer el fetch pageviews')
-                console.error('Error al hacer el fetch pageviews:', error);
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        fetchPageviews()
-    },)
 
     const style = {
         container : {

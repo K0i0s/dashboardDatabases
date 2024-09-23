@@ -10,7 +10,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:3000/api/login', { // URL de tu backend
+            const response = await fetch('http://localhost:3000/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -24,8 +24,10 @@ const Login = () => {
                 return;
             }
 
-            const { token } = await response.json();
-            localStorage.setItem('token', token); // Guardar token en el localStorage
+            // Asume que el backend devuelve un objeto con información del usuario
+            const userData = await response.json();
+            localStorage.setItem('user', JSON.stringify(userData)); // Almacena información del usuario
+
             navigate('/'); // Redirige a Home después del inicio de sesión
         } catch (error) {
             setError('Error al iniciar sesión. Inténtalo de nuevo.');
