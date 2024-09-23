@@ -1,20 +1,17 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth } from '../services/firebase'
+// ProtectedRoute.js
+import { Navigate } from 'react-router-dom';
 
-const ProtectedRoutes = ({children}) => {
-    const [user,loading]=useAuthState(auth)
+const ProtectedRoutes = ({ children }) => {
+    const token = localStorage.getItem('token');
 
-    if (loading){
-        return <div>Cargando...</div>
+    if (!token) {
+        // Redirige a la página de login si no hay token
+        return <Navigate to="/login" />;
     }
 
-    if (!user){
-        return <Navigate to="/login"/>
-    }
+    // Opcional: aquí podrías agregar lógica para verificar la validez del token
 
-  return children
-}
+    return children;
+};
 
-export default ProtectedRoutes
+export default ProtectedRoutes;
