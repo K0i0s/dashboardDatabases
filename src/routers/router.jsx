@@ -20,6 +20,11 @@ const AppRouter = () => {
                     <Home />
                 </ProtectedRoutes>
             } />
+            <Route path='/home' element={
+                <ProtectedRoutes>
+                    <Home />
+                </ProtectedRoutes>
+            } />
             <Route path='/form' element={
                 <ProtectedRoutes>
                     <Form />

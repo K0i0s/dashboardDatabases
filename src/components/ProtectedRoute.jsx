@@ -9,8 +9,6 @@ const ProtectedRoutes = ({ children }) => {
         return <Navigate to="/login" />;
     }
 
-    // Opcional: aquí podrías agregar lógica para verificar la validez del token
-
     return children;
 };
 
